@@ -2,39 +2,21 @@
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from "next/navigation"
-import { signIn } from "next-auth/react"
 
 import { Form, FormControl, FormField, FormLabel, FormMessage } from "@/commons/ui/components/form"
 import { Button } from "@/commons/ui/components/button"
 import { Input } from "@/commons/ui/components/input"
 
-import { useToast } from "@/commons/hooks/use-toast"
+import { useSignIn } from "../../hooks/use-sign-in"
 
 import { SignInSchema, signInSchema } from "../../schemas/sign-in.schema"
 
 export function SignInForm() {
-	const router = useRouter()
-	const { toast } = useToast()
+	const { handleSignIn } = useSignIn()
 	const form = useForm<SignInSchema>({
 		defaultValues: { email: "", password: "" },
 		resolver: zodResolver(signInSchema)
 	})
-
-	async function handleSignIn(credentials: SignInSchema) {
-		const result = await signIn("credentials", {
-			...credentials,
-			redirect: false,
-		})
-		if (result?.error || !result?.ok) {
-			return toast({
-				title: "Authentication Failed",
-        description: "An error occurred while authenticating, please try again!",
-			})
-		}
-		router.replace("/home")
-	}
-
 	return (
 		<Form {...form}>
 			<form
