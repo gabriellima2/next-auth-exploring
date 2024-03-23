@@ -8,12 +8,20 @@ import { SignInDTO } from "@/modules/authentication/dtos/sign-in.dto"
 
 const MOCK_CREDENTIALS: UserEntity[] = [
 	{
-		id: '71b9df1a-675b-4614-aab9-78d22d3645b2',
+		id: '9ef72e00-bd1a-42f4-882e-1719708f7a33',
 		email: "admin@domain.com",
 		password: "000000",
 		name: "System Admin",
 		type: UserType.ADMIN,
-		token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3MWI5ZGYxYS02NzViLTQ2MTQtYWFiOS03OGQyMmQzNjQ1YjIiLCJlbWFpbCI6ImFkbWluQGRvbWFpbi5jb20iLCJuYW1lIjoiU3lzdGVtIEFkbWluIiwidHlwZSI6IkFETUlOIiwiaWF0IjoxNTE2MjM5MDIyfQ.UFahj3TSX6yQjUe4VemHbH7b7OQNjTVAC9JWifbHU20",
+		token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZWY3MmUwMC1iZDFhLTQyZjQtODgyZS0xNzE5NzA4ZjdhMzMiLCJlbWFpbCI6ImFkbWluQGRvbWFpbi5jb20iLCJuYW1lIjoiU3lzdGVtIEFkbWluIiwidHlwZSI6IkFETUlOIiwiaWF0IjoxNTE2MjM5MDIyfQ.7zGiLdAgpaL7KI64Yr5VL8AWTc7V96cbIqH7omhiw2M",
+	},
+	{
+		id: '0fe91790-197a-42d7-9ea2-eac604969d4e',
+		email: "user@domain.com",
+		password: "000000",
+		name: "Common User",
+		type: UserType.COMMON,
+		token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZmU5MTc5MC0xOTdhLTQyZDctOWVhMi1lYWM2MDQ5NjlkNGUiLCJlbWFpbCI6InVzZXJAZG9tYWluLmNvbSIsIm5hbWUiOiJDb21tb24gVXNlciIsInR5cGUiOiJDT01NT04iLCJpYXQiOjE1MTYyMzkwMjJ9.CKZZpafyWbxfbpAWy8IqLxUYahcJqV_J-h-f34tuomI",
 	}
 ]
 
