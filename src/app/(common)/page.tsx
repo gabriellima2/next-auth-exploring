@@ -1,3 +1,5 @@
+import { SignInTemplate } from "@/modules/authentication/ui/templates/sign-in.template";
+
 export default async function LoginPage() {
-	return <h1>Make Login!</h1>
+	return <SignInTemplate />
 }

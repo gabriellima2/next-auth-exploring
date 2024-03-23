@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
 
-import { UserEntity } from "@/entities/user.entity"
-import { UserType } from "@/constants/user-type"
+import { UserEntity } from "@/commons/entities/user.entity"
+import { UserType } from "@/commons/constants/user-type"
 
-import { SignInSchema, signInSchema } from "@/schemas/sign-in.schema"
-import { SignInDTO } from "@/dtos/sign-in.dto"
+import { SignInSchema, signInSchema } from "@/modules/authentication/schemas/sign-in.schema"
+import { SignInDTO } from "@/modules/authentication/dtos/sign-in.dto"
 
 const MOCK_CREDENTIALS: UserEntity[] = [
 	{
