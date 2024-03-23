@@ -2,27 +2,43 @@
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from "next/navigation"
+import { signIn } from "next-auth/react"
 
 import { Form, FormControl, FormField, FormLabel, FormMessage } from "@/commons/ui/components/form"
 import { Button } from "@/commons/ui/components/button"
 import { Input } from "@/commons/ui/components/input"
 
+import { useToast } from "@/commons/hooks/use-toast"
+
 import { SignInSchema, signInSchema } from "../../schemas/sign-in.schema"
 
-export type SignInFormProps = {
-	handleSignIn?: (credentials: SignInSchema) => Promise<void>
-}
-
-export function SignInForm(props: SignInFormProps) {
-	const { handleSignIn } = props
+export function SignInForm() {
+	const router = useRouter()
+	const { toast } = useToast()
 	const form = useForm<SignInSchema>({
 		defaultValues: { email: "", password: "" },
 		resolver: zodResolver(signInSchema)
 	})
+
+	async function handleSignIn(credentials: SignInSchema) {
+		const result = await signIn("credentials", {
+			...credentials,
+			redirect: false,
+		})
+		if (result?.error || !result?.ok) {
+			return toast({
+				title: "Authentication Failed",
+        description: "An error occurred while authenticating, please try again!",
+			})
+		}
+		router.replace("/home")
+	}
+
 	return (
 		<Form {...form}>
 			<form
-				onSubmit={form.handleSubmit((credentials) => handleSignIn && handleSignIn(credentials))}
+				onSubmit={form.handleSubmit((credentials) => handleSignIn(credentials))}
 				className="w-full flex flex-col gap-6"
 			>
 				<FormField
