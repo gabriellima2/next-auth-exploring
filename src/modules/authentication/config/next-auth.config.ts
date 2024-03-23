@@ -1,4 +1,4 @@
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { makeAuthenticationService } from "../services/impl/authentication.service.impl";
@@ -29,4 +29,13 @@ export const nextAuthConfig: NextAuthOptions = {
 		signIn: "/",
 		error: "/"
 	},
+	callbacks: {
+		jwt: async ({ token, user }) => {
+			if (!user) return token;
+			return { ...token, ...user }
+		},
+		session: ({ session, token }) => {
+			return { ...session, ...token } as Session
+		}
+	}
 }

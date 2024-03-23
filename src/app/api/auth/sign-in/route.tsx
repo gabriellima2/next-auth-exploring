@@ -33,6 +33,12 @@ export async function POST(request: Request) {
 	if (!findedUser || !findedUser.length) {
 		return NextResponse.json({ data: "Invalid email or password" }, { status: 400 })
 	}
-	const data: SignInDTO = { ...findedUser[0]	}
+	const data: SignInDTO = {
+		id: findedUser[0].id,
+		name: findedUser[0].name,
+		email: findedUser[0].email,
+		type: findedUser[0].type,
+		token: findedUser[0].token,
+	}
 	return NextResponse.json(data, { status: 200,	})
 }
