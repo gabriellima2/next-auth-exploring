@@ -7,12 +7,12 @@ import { Form, FormControl, FormField, FormLabel, FormMessage } from "@/commons/
 import { Button } from "@/commons/ui/components/button"
 import { Input } from "@/commons/ui/components/input"
 
-import { useSignIn } from "../../hooks/use-sign-in"
+import { useAuth } from "../../hooks/use-auth"
 
 import { SignInSchema, signInSchema } from "../../schemas/sign-in.schema"
 
 export function SignInForm() {
-	const { handleSignIn } = useSignIn()
+	const { handleSignIn } = useAuth()
 	const form = useForm<SignInSchema>({
 		defaultValues: { email: "", password: "" },
 		resolver: zodResolver(signInSchema)

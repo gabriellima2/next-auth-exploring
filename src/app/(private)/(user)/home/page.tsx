@@ -1,7 +1,5 @@
-import { getServerSession } from "next-auth"
-import { nextAuthConfig } from "@/modules/authentication/config/next-auth.config"
+import { HomeTemplate } from "@/modules/user/ui/templates/home.template"
 
 export default async function HomePage() {
-	const session = await getServerSession(nextAuthConfig)
-	return <h1>Hello {session?.name}!</h1>
+	return <HomeTemplate />
 }

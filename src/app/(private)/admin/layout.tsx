@@ -10,7 +10,9 @@ export default async function Layout(props: PropsWithChildren) {
 	const session = await getServerSession(nextAuthConfig)
 
 	if (!session) return redirect("/")
-	if (session.type === UserType.COMMON) return redirect("/home")
+	if (session.type === UserType.COMMON) {
+		return redirect("/home")
+	}
 
 	return (
 		<>

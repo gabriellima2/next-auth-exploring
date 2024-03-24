@@ -1,10 +1,10 @@
 import { useRouter } from "next/navigation"
-import { signIn } from "next-auth/react"
+import { signIn, signOut } from "next-auth/react"
 
 import { useToast } from "@/commons/hooks/use-toast"
 import { SignInSchema } from "../schemas/sign-in.schema"
 
-export function useSignIn() {
+export function useAuth() {
 	const router = useRouter()
 	const { toast } = useToast()
 
@@ -22,7 +22,13 @@ export function useSignIn() {
 		router.replace("/home")
 	}
 
+	async function handleLogout() {
+		await signOut({ redirect: false })
+		router.replace("/")
+	}
+
 	return {
-		handleSignIn
+		handleSignIn,
+		handleLogout,
 	}
 }
