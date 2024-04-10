@@ -1,4 +1,4 @@
-import { UserType } from "@/constants/user-type"
+import { UserType } from "@/commons/constants/user-type"
 
 export interface UserEntity {
 	id: string
