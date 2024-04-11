@@ -27,9 +27,9 @@ export function SignInForm() {
 					name="email"
 					render={({ field }) => (
 						<div className="space-y-2">
-							<FormLabel>Email*</FormLabel>
+							<FormLabel htmlFor="email">Email*</FormLabel>
 							<FormControl>
-								<Input type="email" placeholder="Enter your best email..." {...field} />
+								<Input type="email" id="email" placeholder="Enter your best email..." {...field} />
 							</FormControl>
 							<FormMessage />
 						</div>
@@ -40,9 +40,9 @@ export function SignInForm() {
 					render={({ field }) => (
 						<div className="flex flex-col items-end gap-2">
 							<div className="w-full space-y-2">
-								<FormLabel>Password*</FormLabel>
+								<FormLabel htmlFor="password">Password*</FormLabel>
 								<FormControl>
-									<Input type="password" placeholder="Password with a minimum of 6 chars..." {...field} />
+									<Input type="password" id="password" placeholder="Password with a minimum of 6 chars..." {...field} />
 								</FormControl>
 								<FormMessage />
 							</div>
