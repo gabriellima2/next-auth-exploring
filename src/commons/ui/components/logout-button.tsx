@@ -6,7 +6,7 @@ export function LogoutButton() {
 	const { handleLogout } = useAuth()
 	return (
 		<Button type="button" variant="outline" onClick={handleLogout}>
-			Sair
+			Logout
 		</Button>
 	)
 }
